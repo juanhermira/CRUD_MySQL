@@ -37,7 +37,7 @@ def obtener_parametro_por_id(idParametro):
     return parametro
 
 
-def actualizar_parametro(valorParametro, idParametro):
+def actualizar_parametro(idParametro, valorParametro):
     conexion = obtener_conexion()
     with conexion.cursor() as cursor:
         cursor.execute("UPDATE parametros SET valorParametro = %s WHERE idParametro = %s",

@@ -26,7 +26,7 @@ def parametros():
 
 @app.route("/eliminar_parametro", methods=["POST"])
 def eliminar_parametro():
-    controlador_juegos.eliminar_parametro(request.form["idPatrametro"])
+    controlador_juegos.eliminar_parametro(request.form["idParametro"])
     return redirect("/parametros")
 
 
@@ -34,7 +34,7 @@ def eliminar_parametro():
 def editar_parametro(idParametro):
     # Obtener el parametro por ID
     parametro = controlador_juegos.obtener_parametro_por_id(idParametro)
-    return render_template("editar_juego.html", parametros=parametros)
+    return render_template("editar_juego.html", parametro=parametro)
 
 
 @app.route("/actualizar_parametro", methods=["POST"])

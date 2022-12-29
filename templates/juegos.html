@@ -1,0 +1,41 @@
+{% extends "maestra.html" %}
+{% block titulo %} Parametros {% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Parámetros</h3>
+            <a href="{{url_for('formulario_agregar_parametro')}}" class="button is-success">Agregar</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>IdPrametro</th>
+                        <th>valorParametro</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for parametro in parametros %}
+                    <tr>
+                        <td>{{parametro[0]}}</td>
+                        <td>{{parametro[1]}}</td>
+                        <td>
+                            {# Pasar el idParametro (lo que hay en juego[0] #}
+                            <a href="{{url_for('editar_parametro', idParametro=parametro[0])}}" class="button is-info">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{url_for('eliminar_parametro')}}" method="POST">
+                                <input type="hidden" name="idParametro" value="{{parametro[0]}}">
+                                <button class="button is-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

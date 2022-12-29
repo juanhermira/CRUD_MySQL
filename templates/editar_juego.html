@@ -1,0 +1,22 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Editar parametro
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Editar parametro</h3>
+            <form action="{{url_for('actualizar_parametro')}}" method="post">
+                {# Enviar el id en un campo oculto #}
+                <label for="idParametro">idParametro:</label>
+                <input value="{{parametro[1]}}" required type="text" class="input" placeholder="idParametro" name="idParametro" id="idParametro">
+                <label for="valorParametro">valorParametro</label>
+                <input value="{{parametro[2]}}" required type="text" class="input" placeholder="valorParametro" name="valorParametro" id="valorParametro">
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{url_for('parametros')}}" class="button is-primary mt-2">Volver</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "maestra.html" %}
+{% block titulo %} Conceptos {% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Conceptos</h3>
+            <a href="{{url_for('formulario_agregar_concepto')}}" class="button is-success">Agregar</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>idConcepto</th>
+                        <th>responsabilidad</th>
+                        <th>tipo</th>
+                        <th>descripcion</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for concepto in conceptos %}
+                    <tr>
+                        <td>{{concepto[0]}}</td>
+                        <td>{{concepto[1]}}</td>
+                        <td>{{concepto[2]}}</td>
+                        <td>{{concepto[3]}}</td>
+                        <td>
+                            {# Pasar el idParametro (lo que hay en juego[0] #}
+                            <a href="{{url_for('editar_concepto', idConcepto=concepto[0])}}" class="button is-info">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{url_for('eliminar_concepto')}}" method="POST">
+                                <input type="hidden" name="idConcepto" value="{{concepto[0]}}">
+                                <button class="button is-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

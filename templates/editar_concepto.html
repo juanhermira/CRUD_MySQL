@@ -1,0 +1,25 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Editar concepto
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Editar concepto</h3>
+            <form action="{{url_for('actualizar_concepto')}}" method="post">
+                {# Enviar el id en un campo oculto #}
+                <input type="hidden" name="idConcepto" value="{{concepto[0]}}">
+                <label for="responsabilidad">responsabilidad:</label>
+                <input value="{{concepto[1]}}" required type="text" class="input" placeholder="responsabilidad" name="responsabilidad" id="responsabilidad">
+                <label for="tipo">tipo:</label>
+                <input value="{{concepto[2]}}" required type="text" class="input" placeholder="tipo" name="tipo" id="tipo">
+                <label for="descripcion">descripcion:</label>
+                <input value="{{concepto[3]}}" required type="text" class="input" placeholder="descripcion" name="descripcion" id="descripcion">
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{url_for('conceptos')}}" class="button is-primary mt-2">Volver</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
